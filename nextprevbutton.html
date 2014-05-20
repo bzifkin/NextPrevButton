@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Proteus: Search</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/history.js/1.8/native.history.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="nextprevbutton.css" />
+ 
+	<script type="text/javascript">
+	var page = 1;
+    $(document).ready( function(){
+	
+	$("#resultImg").html('<image src="http://www.archive.org/download/12yearsaslave00nortrich/page/n' + page + '.jpg" height="70%" width="36%">') ;
+	});
+	var book = "12yearsaslave00nortrich";
+	
+	function nextPage(){
+	page= page +1;
+	console.log(page);
+	$("#resultImg").html('<image src="http://www.archive.org/download/' + book +'/page/n' + page + '.jpg" height="70%" width="36%">');
+	
+	}
+	function prevPage(){
+	page= page -1;
+	console.log(page);
+	$("#resultImg").html('<image src="http://www.archive.org/download/' + book +'/page/n' + page + '.jpg" height="70%" width="36%">');
+	
+	}
+	
+	</script>
+	
+
+  </head>
+  <body>
+    <div id= 'nBut' ><input type="button" id="next" onclick="nextPage()" value="----->"> </div>
+	<div id= 'pBut' ><input type="button" id="prev" onclick="prevPage()" value="<-----"></div>
+	<div id='resultImg'  ></div>
+	
+	
+  </body>
+  <!-- scripts included here evaluate after the page loads -->
+  <script src="js/ui.js"></script>
+  <script src="js/actions.js"></script>
+  <script src="js/main.js"></script>
+</html>
