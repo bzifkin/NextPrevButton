@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Proteus: Search</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/history.js/1.8/native.history.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="nextprevbutton.css" />
+
+   
+
+</head>
+
+<body>
+    <div id="preload"></div>
+    <div id="ui"> <span id="title">Proteus</span></div>
+    <table align="center">
+        <tr>
+            <td>
+                <div id='prevImg'></div>
+            </td>
+            
+            <td></td>
+            
+            <td>
+                <div id='nextImg'></div>
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <input type="button" id="prev" onclick="pageChange()" value="<-----"> 
+            </td>
+            
+            <td> 
+                <div id='currImg'></div>
+            </td>
+            
+            <td>
+                <input type="button" id="next" onclick="pageChange()" value="----->">
+             </td>
+
+        </tr>
+    </table>
+
+    
+
+    <div id="footer">
+        <div id="progress"></div>
+    </div>
+    <script type="text/javascript">
+        var goToNext = document.getElementById('next');
+        var goToPrev = document.getElementById('prev');
+
+        var prevPage = document.getElementById("prevImg");
+        var currentPage = document.getElementById("currImg");
+        var nextPage = document.getElementById('nextImg');
+        var preloadPage = document.getElementById('preload');
+
+        var page = 1;
+        var book = "12yearsaslave00nortrich";
+
+
+        pageChange();
+
+        goToNext.addEventListener('click', function () {
+            page++;
+            pageChange();
+        });
+
+        goToPrev.addEventListener('click', function () {
+            if (page === 0)
+                return;
+            page--;
+            pageChange();
+
+        });
+
+        function pageChange() {
+            
+            prevPage.style.backgroundImage = 'url("http://www.archive.org/download/' + book + '/page/n' + (page - 1) + '.jpg")';
+            currentPage.style.backgroundImage = 'url("http://www.archive.org/download/' + book + '/page/n' + page + '.jpg")';
+            nextPage.style.backgroundImage = 'url("http://www.archive.org/download/' + book + '/page/n' + (page + 1) + '.jpg")';
+            preloadPage.style.backgroundImage = 'url("http://www.archive.org/download/' + book + '/page/n' + (page + 2) + '.jpg")';
+        }
+        function myBook(book, page) {
+            return "http://www.archive.org/download/" + book + "/page/n" + page + ".jpg"
+
+        }
+
+
+    </script>
+
+</body>
+<!-- scripts included here evaluate after the page loads -->
+<script src="js/ui.js"></script>
+<script src="js/actions.js"></script>
+<script src="js/main.js"></script>
+</html>

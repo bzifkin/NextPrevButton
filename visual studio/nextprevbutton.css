@@ -1,0 +1,35 @@
+﻿#preload{position:absolute;width:0px;height:0px;overflow:hidden;}
+#ui {
+    margin: 0;
+    padding: 10pt;
+    background-color: #009;
+}
+#title {
+    margin: 0;
+    vertical-align: middle;
+    padding-right: 20pt;
+    font-size: 20pt;
+    font-weight: bold;
+    height: 20pt;
+    color: #fff;
+}
+
+#currImg, #nextImg, #prevImg{
+    background-size:contain;
+    background-repeat:no-repeat;
+}
+
+#currImg{
+    height:500px;
+    width:280px;
+}
+#nextImg, #prevImg{
+    height:125px;
+    width:70px;
+}
+#footer {
+  margin: 0;
+  margin-top: 40pt;
+  padding: 10pt;
+  background-color: #009;
+}
