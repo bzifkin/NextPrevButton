@@ -23,22 +23,28 @@
             </td>
             
             <td></td>
+            <td></td>
             
             <td>
                 <div id='nextImg'></div>
             </td>
         </tr>
         <tr>
-            <td> 
-                <input type="button" id="prev" onclick="pageChange()" value="<-----"> 
-            </td>
-            
-            <td> 
-                <div id='currImg'></div>
-            </td>
-            
             <td>
-                <input type="button" id="next" onclick="pageChange()" value="----->">
+                <input type="button" id="begin" value="Go to Beginning">
+            </td>
+            <td> 
+                <input type="button" id="prev" value="<-----"> 
+            </td>
+            <td>
+                <div id='currImgL'></div>
+            </td>
+            <td> 
+                <div id='currImgR'></div>
+            </td>
+           
+            <td>
+                <input type="button" id="next"  value="----->">
              </td>
 
         </tr>
@@ -52,9 +58,11 @@
     <script type="text/javascript">
         var goToNext = document.getElementById('next');
         var goToPrev = document.getElementById('prev');
+        var goToBeg = document.getElementById('begin')
 
         var prevPage = document.getElementById("prevImg");
-        var currentPage = document.getElementById("currImg");
+        var currentRight = document.getElementById("currImgR");
+        var currentLeft = document.getElementById("currImgL");
         var nextPage = document.getElementById('nextImg');
         var preloadPage = document.getElementById('preload');
 
@@ -64,25 +72,31 @@
 
         pageChange();
 
+       goToBeg.addEventListener('click', function () {
+            page = 1;
+            pageChange();
+        });
+
         goToNext.addEventListener('click', function () {
-            page++;
+            page= page +2;
             pageChange();
         });
 
         goToPrev.addEventListener('click', function () {
-            if (page === 0)
+            if (page + 1 === 0)
                 return;
-            page--;
+            page= page-2;
             pageChange();
 
         });
 
         function pageChange() {
             
-            prevPage.style.backgroundImage = 'url("http://www.archive.org/download/' + book + '/page/n' + (page - 1) + '.jpg")';
-            currentPage.style.backgroundImage = 'url("http://www.archive.org/download/' + book + '/page/n' + page + '.jpg")';
-            nextPage.style.backgroundImage = 'url("http://www.archive.org/download/' + book + '/page/n' + (page + 1) + '.jpg")';
-            preloadPage.style.backgroundImage = 'url("http://www.archive.org/download/' + book + '/page/n' + (page + 2) + '.jpg")';
+            prevPage.style.backgroundImage = 'url("' + myBook(book, page-1) + '")';
+            currentLeft.style.backgroundImage = 'url("' + myBook(book, page) + '")';
+            currentRight.style.backgroundImage = 'url("' + myBook(book, page+1) + '")';
+            nextPage.style.backgroundImage = 'url("' + myBook(book, page+2) + '")';
+            preloadPage.style.backgroundImage = 'url("' + myBook(book, page+2) + '")';
         }
         function myBook(book, page) {
             return "http://www.archive.org/download/" + book + "/page/n" + page + ".jpg"

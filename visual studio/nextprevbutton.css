@@ -14,12 +14,12 @@
     color: #fff;
 }
 
-#currImg, #nextImg, #prevImg{
+#currImgR, #currImgL, #nextImg, #prevImg{
     background-size:contain;
     background-repeat:no-repeat;
 }
 
-#currImg{
+#currImgR, #currImgL{
     height:500px;
     width:280px;
 }
